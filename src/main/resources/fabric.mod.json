@@ -1,0 +1,51 @@
+{
+    "schemaVersion": 1,
+    "id": "albom",
+    "version": "${version}",
+    "name": "A Little Bit Of Mobs",
+    "description": "",
+    "authors": [
+        "Hybrid Labs"
+    ],
+    "contact": {
+        "homepage": "https://hybridlabs.dev/albom",
+        "sources": "https://github.com/hybridlabs/albom",
+        "issues": "https://github.com/hybridlabs/albom/issues"
+    },
+    "license": "ARR",
+    "icon": "assets/albom/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            {
+                "value": "dev.hybridlabs.albom.ALBOM",
+                "adapter": "kotlin"
+            }
+        ],
+        "client": [
+            {
+                "value": "dev.hybridlabs.albom.client.ALBOMClient",
+                "adapter": "kotlin"
+            }
+        ],
+        "fabric-datagen": [
+            {
+                "value": "dev.hybridlabs.albom.data.ALBOMDataGenerator",
+                "adapter": "kotlin"
+            }
+        ]
+    },
+    "mixins": [
+        "albom.mixins.json",
+        {
+            "config": "albom.client.mixins.json",
+            "environment": "client"
+        }
+    ],
+    "accessWidener": "albom.accesswidener",
+    "depends": {
+        "minecraft": "~1.20.1",
+        "fabric-api": "*",
+        "fabric-language-kotlin": "*"
+    }
+}
