@@ -1,15 +1,18 @@
 package dev.hybridlabs.albom.entity.giant
 
+import net.minecraft.core.BlockPos
+import net.minecraft.util.RandomSource
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.MobSpawnType
 import net.minecraft.world.entity.MobType
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal
 import net.minecraft.world.entity.monster.Monster
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.ServerLevelAccessor
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.constant.DefaultAnimations
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -46,5 +49,19 @@ open class AbstractGiantEntity(type: EntityType<out AbstractGiantEntity>, world:
 
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
         return factory
+    }
+
+    companion object {
+        fun canSpawn(
+            type: EntityType<out AbstractGiantEntity>,
+            world: ServerLevelAccessor,
+            reason: MobSpawnType,
+            pos: BlockPos,
+            random: RandomSource,
+        ): Boolean {
+            return world.getBlockState(pos.below()).isSolid &&
+                    world.isEmptyBlock(pos) &&
+                    world.canSeeSky(pos)
+        }
     }
 }

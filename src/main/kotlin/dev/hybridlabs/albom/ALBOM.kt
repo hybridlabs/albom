@@ -1,5 +1,6 @@
 package dev.hybridlabs.albom
 
+import dev.hybridlabs.albom.entity.SpawnRestrictionRegistry
 import dev.hybridlabs.albom.item.ALBOMItemGroups
 import net.fabricmc.api.ModInitializer
 import net.minecraft.core.Registry
@@ -16,6 +17,8 @@ object ALBOM : ModInitializer {
         logger.info("Initializing $MOD_NAME")
 
         ALBOMItemGroups
+
+        SpawnRestrictionRegistry.registerSpawnRestrictions()
     }
 
     fun <T> Registry<T>.filterAlbomMod(): List<T> {

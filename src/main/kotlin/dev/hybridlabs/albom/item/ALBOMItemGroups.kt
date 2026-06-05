@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 
 object ALBOMItemGroups {
-    val MOBS = register("mobs",
+    val MOBS = register("albom",
         FabricItemGroup.builder()
             .title(Component.translatable("itemGroup.${ALBOM.MOD_ID}.mobs"))
             .icon { ItemStack(Items.BAT_SPAWN_EGG) }
