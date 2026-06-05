@@ -1,0 +1,99 @@
+package dev.hybridlabs.albom.platform.services;
+
+import dev.hybridlabs.albom.platform.registration.RegistryObject;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.Heightmap;
+import org.jetbrains.annotations.NotNull;
+
+import java.nio.file.Path;
+import java.util.concurrent.Callable;
+import java.util.function.Supplier;
+
+public class FabricPlatformHelper implements PlatformHelper {
+
+    @Override
+    public String getPlatformName() {
+        return "Fabric";
+    }
+
+    @Override
+    public boolean isModLoaded(String modId) {
+        return FabricLoader.getInstance().isModLoaded(modId);
+    }
+
+    @Override
+    public boolean isDevelopmentEnvironment() {
+        return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
+
+    @Override
+    public Path getConfigDir() {
+        return FabricLoader.getInstance().getConfigDir();
+    }
+
+    @Override
+    public <T extends LivingEntity> void registerAttributes(
+            @NotNull String id,
+            EntityType<T> entityType,
+            Callable<AttributeSupplier.Builder> attributeContainer) {
+        try {
+            FabricDefaultAttributeRegistry.register(entityType, attributeContainer.call().build());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to register attributes for " + id, e);
+        }
+    }
+
+    @Override
+    public <T extends Mob> void registerSpawnPlacement(
+            RegistryObject<EntityType<T>> entityType,
+            SpawnPlacements.Type decoratorType,
+            Heightmap.Types heightMapType,
+            SpawnPlacements.SpawnPredicate<T> decoratorPredicate) {
+        SpawnPlacements.register(entityType.get(), decoratorType, heightMapType, decoratorPredicate);
+    }
+
+    @Override
+    public <T extends Mob> Supplier<SpawnEggItem> registerSpawnEggItem(
+            @NotNull String name,
+            Supplier<EntityType<T>> entityType,
+            int backgroundColor, int highlightColor) {
+        throw new UnsupportedOperationException("registerSpawnEggItem not implemented");
+    }
+
+    @Override
+    public Attribute getReachAttribute() {
+        throw new UnsupportedOperationException("getReachAttribute not implemented");
+    }
+
+    @Override
+    public MobCategory getMobCategoryByName(String name) {
+        throw new UnsupportedOperationException("getMobCategoryByName not implemented");
+    }
+
+    @Override
+    public Item createBlockItem(Block block, Item.Properties properties) {
+        throw new UnsupportedOperationException("createBlockItem not implemented");
+    }
+
+    @Override
+    public Item createMessageInABottleItem(Item.Properties properties) {
+        throw new UnsupportedOperationException("createMessageInABottleItem not implemented");
+    }
+
+    @Override
+    public void sendHookToServer(int entityId, ItemStack entityData) {
+        throw new UnsupportedOperationException("sendHookToServer not implemented");
+    }
+}
