@@ -4,6 +4,7 @@ import dev.hybridlabs.albom.CommonClass
 import dev.hybridlabs.albom.entity.giant.FireGiantEntity
 import dev.hybridlabs.albom.entity.giant.FrostGiantEntity
 import dev.hybridlabs.albom.entity.giant.HillGiantEntity
+import dev.hybridlabs.albom.entity.insect.ScarabEntity
 import dev.hybridlabs.albom.platform.Services
 import dev.hybridlabs.albom.platform.registration.RegistryObject
 import net.minecraft.world.entity.EntityDimensions
@@ -25,7 +26,7 @@ object ALBOMEntityTypes {
     val HILL_GIANT = registerMonster(
         "hill_giant",
         ::HillGiantEntity,
-        EntityDimensions.fixed(3.0f, 6.0f),
+        EntityDimensions.fixed(2.0f, 5.0f),
         HillGiantEntity::createMobAttributes
     )
 

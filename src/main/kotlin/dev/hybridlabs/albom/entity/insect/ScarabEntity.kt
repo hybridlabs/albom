@@ -1,8 +1,11 @@
-package dev.hybridlabs.albom.entity
+package dev.hybridlabs.albom.entity.insect
 
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal
+import net.minecraft.world.entity.ai.goal.RandomStrollGoal
 import net.minecraft.world.entity.monster.Monster
 import net.minecraft.world.level.Level
 import software.bernie.geckolib.animatable.GeoEntity
@@ -10,7 +13,6 @@ import software.bernie.geckolib.constant.DefaultAnimations
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager
 import software.bernie.geckolib.core.animation.AnimationController
-import software.bernie.geckolib.core.animation.AnimationController.AnimationStateHandler
 import software.bernie.geckolib.core.animation.AnimationState
 import software.bernie.geckolib.core.`object`.PlayState
 import software.bernie.geckolib.util.GeckoLibUtil
@@ -20,6 +22,13 @@ open class ScarabEntity(type: EntityType<out ScarabEntity>, world: Level) :
 
     private val factory = GeckoLibUtil.createInstanceCache(this)
 
+    override fun registerGoals() {
+        goalSelector.addGoal(3, RandomStrollGoal(this, 0.5))
+        goalSelector.addGoal(1, RandomLookAroundGoal(this))
+        goalSelector.addGoal(4, MeleeAttackGoal(this, 1.0, true))
+        super.registerGoals()
+    }
+
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
 
         controllerRegistrar.add(
@@ -28,7 +37,7 @@ open class ScarabEntity(type: EntityType<out ScarabEntity>, world: Level) :
         controllerRegistrar.add(
             AnimationController(
                 this, "Spawning",
-                AnimationStateHandler { state: AnimationState<ScarabEntity> ->
+                AnimationController.AnimationStateHandler { state: AnimationState<ScarabEntity> ->
                     if (this.tickCount < 20)
                         return@AnimationStateHandler state.setAndContinue(DefaultAnimations.SPAWN)
                     PlayState.STOP

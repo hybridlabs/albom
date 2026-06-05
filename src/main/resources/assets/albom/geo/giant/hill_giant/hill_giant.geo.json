@@ -61,6 +61,14 @@
 					]
 				},
 				{
+					"name": "eyelids",
+					"parent": "head",
+					"pivot": [0, 61, -8.9],
+					"cubes": [
+						{"origin": [-5, 60, -8.9], "size": [10, 2, 0], "uv": [93, 95]}
+					]
+				},
+				{
 					"name": "right_leg",
 					"parent": "body",
 					"pivot": [-7.5, 24, 0],
