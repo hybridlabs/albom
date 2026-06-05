@@ -26,7 +26,7 @@ object ALBOMEntityTypes {
     val HILL_GIANT = registerMonster(
         "hill_giant",
         ::HillGiantEntity,
-        EntityDimensions.fixed(2.0f, 5.0f),
+        EntityDimensions.fixed(2.0f, 4.0f),
         HillGiantEntity::createMobAttributes
     )
 

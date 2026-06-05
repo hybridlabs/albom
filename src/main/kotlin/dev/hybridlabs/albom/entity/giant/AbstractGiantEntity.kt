@@ -2,11 +2,13 @@ package dev.hybridlabs.albom.entity.giant
 
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobType
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal
 import net.minecraft.world.entity.monster.Monster
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.constant.DefaultAnimations
@@ -20,9 +22,10 @@ open class AbstractGiantEntity(type: EntityType<out AbstractGiantEntity>, world:
     private val factory = GeckoLibUtil.createInstanceCache(this)
 
     override fun registerGoals() {
+        goalSelector.addGoal(1, MeleeAttackGoal(this, 1.0, true))
+        goalSelector.addGoal(1, LookAtPlayerGoal(this, Player::class.java, 8.0f, 0.1f, true))
+        goalSelector.addGoal(2, RandomLookAroundGoal(this))
         goalSelector.addGoal(3, RandomStrollGoal(this, 0.5))
-        goalSelector.addGoal(1, RandomLookAroundGoal(this))
-        goalSelector.addGoal(4, MeleeAttackGoal(this, 1.0, true))
         super.registerGoals()
     }
 
