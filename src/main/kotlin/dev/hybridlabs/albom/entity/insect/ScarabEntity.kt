@@ -1,6 +1,7 @@
 package dev.hybridlabs.albom.entity.insect
 
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.MobType
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal
@@ -30,6 +31,14 @@ open class ScarabEntity(type: EntityType<out ScarabEntity>, world: Level) :
         goalSelector.addGoal(2, RandomLookAroundGoal(this))
         goalSelector.addGoal(3, RandomStrollGoal(this, 0.5))
         super.registerGoals()
+    }
+
+    override fun getMobType(): MobType {
+        return MobType.ARTHROPOD
+    }
+
+    override fun getMaxHeadXRot(): Int {
+        return 0
     }
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
