@@ -32,7 +32,9 @@ open class AbstractGiantEntity(type: EntityType<out AbstractGiantEntity>, world:
 
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(DefaultAnimations.genericLivingController(this))
-        controllerRegistrar.add(DefaultAnimations.genericWalkRunIdleController(this))
+        controllerRegistrar.add(DefaultAnimations.genericWalkRunIdleController(this)
+            .transitionLength(4)
+        )
     }
 
     override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
