@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public enum ALBOMSpawnGroup {
-    ALBOM_DRAGON("dragon", 10, true, false, 64);
+    ALBOM_DRAGON("dragon", 10, true, false, 64),
+    ALBOM_GIANT("giant", 10, true, false, 64);
 
     public MobCategory spawnGroup;
     public final String gName;
