@@ -17,7 +17,7 @@ object ALBOMItemGroups {
             .title(Component.translatable("itemGroup.${ALBOM.MOD_ID}.mobs"))
             .icon { ItemStack(Items.BAT_SPAWN_EGG) }
             .displayItems { _, entries ->
-                BuiltInRegistries.BLOCK.filterAlbomMod().forEach(entries::accept)
+                BuiltInRegistries.ITEM.filterAlbomMod().forEach(entries::accept)
             }
             .build()
     )

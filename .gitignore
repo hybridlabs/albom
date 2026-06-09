@@ -49,3 +49,5 @@ replay_*.log
 src/main/generated/.cache/
 src/main/generated/assets/minecraft/
 src/main/generated/data/minecraft/loot_tables/
+
+.claude/

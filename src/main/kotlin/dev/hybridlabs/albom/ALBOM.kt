@@ -2,6 +2,7 @@ package dev.hybridlabs.albom
 
 import dev.hybridlabs.albom.entity.SpawnRestrictionRegistry
 import dev.hybridlabs.albom.item.ALBOMItemGroups
+import dev.hybridlabs.albom.item.ALBOMItems
 import net.fabricmc.api.ModInitializer
 import net.minecraft.core.Registry
 import org.slf4j.LoggerFactory
@@ -16,6 +17,7 @@ object ALBOM : ModInitializer {
     override fun onInitialize() {
         logger.info("Initializing $MOD_NAME")
 
+        ALBOMItems
         ALBOMItemGroups
 
         SpawnRestrictionRegistry.registerSpawnRestrictions()
