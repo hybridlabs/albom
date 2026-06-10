@@ -1,3 +1,17 @@
 {
-  "itemGroup.albom.albom": "A Little Bit Of Mobs"
+  "entity.albom.fairy": "Fairy",
+  "entity.albom.fire_giant": "Fire Giant",
+  "entity.albom.frost_giant": "Frost Giant",
+  "entity.albom.hill_giant": "Hill Giant",
+  "entity.albom.pixie": "Pixie",
+  "entity.albom.scarab": "Scarab",
+  "entity.albom.sprite": "Sprite",
+  "item.albom.fairy_spawn_egg": "Fairy Spawn Egg",
+  "item.albom.fire_giant_spawn_egg": "Fire Giant Spawn Egg",
+  "item.albom.frost_giant_spawn_egg": "Frost Giant Spawn Egg",
+  "item.albom.hill_giant_spawn_egg": "Hill Giant Spawn Egg",
+  "item.albom.pixie_spawn_egg": "Pixie Spawn Egg",
+  "item.albom.scarab_spawn_egg": "Scarab Spawn Egg",
+  "item.albom.sprite_spawn_egg": "Sprite Spawn Egg",
+  "itemGroup.albom.mobs": "A Little Bit Of Mobs"
 }

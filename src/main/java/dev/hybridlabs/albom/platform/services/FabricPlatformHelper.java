@@ -1,5 +1,6 @@
 package dev.hybridlabs.albom.platform.services;
 
+import dev.hybridlabs.albom.CommonClass;
 import dev.hybridlabs.albom.platform.registration.RegistryObject;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -69,7 +70,7 @@ public class FabricPlatformHelper implements PlatformHelper {
             @NotNull String name,
             Supplier<EntityType<T>> entityType,
             int backgroundColor, int highlightColor) {
-        throw new UnsupportedOperationException("registerSpawnEggItem not implemented");
+        return CommonClass.ITEMS.register(name, () -> new SpawnEggItem(entityType.get(), backgroundColor, highlightColor, new Item.Properties()));
     }
 
     @Override
