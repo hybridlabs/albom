@@ -50,21 +50,21 @@ object ALBOMEntityTypes {
     val FAIRY = registerFae(
         "fairy",
         ::FairyEntity,
-        EntityDimensions.fixed(0.2f, 0.3f),
+        EntityDimensions.fixed(0.5f, 0.75f),
         FairyEntity::createMobAttributes
     )
 
     val PIXIE = registerFae(
         "pixie",
         ::PixieEntity,
-        EntityDimensions.fixed(0.2f, 0.3f),
+        EntityDimensions.fixed(0.5f, 0.75f),
         PixieEntity::createMobAttributes
     )
 
     val SPRITE = registerFae(
         "sprite",
         ::SpriteEntity,
-        EntityDimensions.fixed(0.3f, 0.3f),
+        EntityDimensions.fixed(0.5f, 0.75f),
         SpriteEntity::createMobAttributes
     )
 

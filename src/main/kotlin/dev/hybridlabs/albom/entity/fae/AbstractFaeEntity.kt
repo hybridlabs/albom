@@ -1,24 +1,21 @@
 package dev.hybridlabs.albom.entity.fae
 
 import net.minecraft.core.BlockPos
+import net.minecraft.sounds.SoundEvent
+import net.minecraft.sounds.SoundEvents
 import net.minecraft.util.RandomSource
-import net.minecraft.world.entity.EntityType
-import net.minecraft.world.entity.MobSpawnType
-import net.minecraft.world.entity.MobType
-import net.minecraft.world.entity.PathfinderMob
+import net.minecraft.world.damagesource.DamageSource
+import net.minecraft.world.entity.*
 import net.minecraft.world.entity.ai.control.FlyingMoveControl
-import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl
-import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomFlyingGoal
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation
 import net.minecraft.world.entity.ai.navigation.PathNavigation
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.ServerLevelAccessor
+import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.pathfinder.BlockPathTypes
 import software.bernie.geckolib.animatable.GeoEntity
 import software.bernie.geckolib.constant.DefaultAnimations
@@ -56,9 +53,28 @@ open class AbstractFaeEntity(type: EntityType<out AbstractFaeEntity>, world: Lev
         return 45
     }
 
+    override fun checkFallDamage(d: Double, bl: Boolean, blockState: BlockState, blockPos: BlockPos) {
+    }
+
+    override fun getAmbientSound(): SoundEvent? {
+        return SoundEvents.ALLAY_AMBIENT_WITHOUT_ITEM
+    }
+
+    override fun getHurtSound(damageSource: DamageSource): SoundEvent? {
+        return SoundEvents.ALLAY_HURT
+    }
+
+    override fun getDeathSound(): SoundEvent? {
+        return SoundEvents.ALLAY_DEATH
+    }
+
+    override fun getSoundVolume(): Float {
+        return 0.2f
+    }
+
     override fun registerControllers(controllerRegistrar: AnimatableManager.ControllerRegistrar) {
         controllerRegistrar.add(DefaultAnimations.genericLivingController(this))
-        controllerRegistrar.add(DefaultAnimations.genericFlyIdleController(this)
+        controllerRegistrar.add(DefaultAnimations.genericWalkFlyIdleController(this)
             .transitionLength(4)
         )
     }

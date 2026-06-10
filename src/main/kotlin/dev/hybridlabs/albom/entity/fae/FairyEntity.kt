@@ -1,6 +1,5 @@
 package dev.hybridlabs.albom.entity.fae
 
-import dev.hybridlabs.albom.entity.giant.AbstractGiantEntity
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
@@ -14,6 +13,7 @@ open class FairyEntity(type: EntityType<out AbstractFaeEntity>, world: Level) :
             return createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.6)
+                .add(Attributes.FLYING_SPEED, 0.6)
                 .add(Attributes.ATTACK_DAMAGE, 1.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.3)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
