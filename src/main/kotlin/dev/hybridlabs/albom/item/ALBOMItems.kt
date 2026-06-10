@@ -12,7 +12,19 @@ import java.util.function.Supplier
 object ALBOMItems {
 
     val HILL_GIANT_SPAWN_EGG =
-        registerSpawnEgg("sea_angel_spawn_egg", ALBOMEntityTypes.HILL_GIANT, 0xc6d5f9, 0xf38135)
+        registerSpawnEgg("hill_giant_spawn_egg", ALBOMEntityTypes.HILL_GIANT, 0xc6d5f9, 0xf38135)
+    val FIRE_GIANT_SPAWN_EGG =
+        registerSpawnEgg("fire_giant_spawn_egg", ALBOMEntityTypes.FIRE_GIANT, 0xc6d5f9, 0xf38135)
+    val FROST_GIANT_SPAWN_EGG =
+        registerSpawnEgg("frost_giant_spawn_egg", ALBOMEntityTypes.FROST_GIANT, 0xc6d5f9, 0xf38135)
+    val SCARAB_SPAWN_EGG =
+        registerSpawnEgg("scarab_spawn_egg", ALBOMEntityTypes.SCARAB, 0xc6d5f9, 0xf38135)
+    val FAIRY_SPAWN_EGG =
+        registerSpawnEgg("fairy_spawn_egg", ALBOMEntityTypes.FAIRY, 0xc615f9, 0xf31135)
+    val PIXIE_SPAWN_EGG =
+        registerSpawnEgg("pixie_spawn_egg", ALBOMEntityTypes.PIXIE, 0xc615f9, 0xf31135)
+    val SPRITE_SPAWN_EGG =
+        registerSpawnEgg("sprite_spawn_egg", ALBOMEntityTypes.SPRITE, 0xc615f9, 0xf31135)
 
     fun register(id: String, item: Supplier<Item>): Supplier<Item> {
         return CommonClass.ITEMS.register(id, item)

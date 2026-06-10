@@ -1,5 +1,8 @@
 package dev.hybridlabs.albom.client.render
 
+import dev.hybridlabs.albom.client.render.entity.fae.FairyEntityRenderer
+import dev.hybridlabs.albom.client.render.entity.fae.PixieEntityRenderer
+import dev.hybridlabs.albom.client.render.entity.fae.SpriteEntityRenderer
 import dev.hybridlabs.albom.client.render.entity.giant.FireGiantEntityRenderer
 import dev.hybridlabs.albom.client.render.entity.giant.FrostGiantEntityRenderer
 import dev.hybridlabs.albom.entity.ALBOMEntityTypes
@@ -31,5 +34,23 @@ object ALBOMEntityRenderers {
         ClientServices.PLATFORM.registerEntityRenderer(
             ALBOMEntityTypes.SCARAB,
             ::ScarabEntityRenderer
+        )
+
+    val FAIRY =
+        ClientServices.PLATFORM.registerEntityRenderer(
+            ALBOMEntityTypes.FAIRY,
+            ::FairyEntityRenderer
+        )
+
+    val PIXIE =
+        ClientServices.PLATFORM.registerEntityRenderer(
+            ALBOMEntityTypes.PIXIE,
+            ::PixieEntityRenderer
+        )
+
+    val SPRITE =
+        ClientServices.PLATFORM.registerEntityRenderer(
+            ALBOMEntityTypes.SPRITE,
+            ::SpriteEntityRenderer
         )
 }

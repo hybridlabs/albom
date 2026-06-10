@@ -1,6 +1,9 @@
 package dev.hybridlabs.albom.entity
 
 import dev.hybridlabs.albom.CommonClass
+import dev.hybridlabs.albom.entity.fae.FairyEntity
+import dev.hybridlabs.albom.entity.fae.PixieEntity
+import dev.hybridlabs.albom.entity.fae.SpriteEntity
 import dev.hybridlabs.albom.entity.giant.FireGiantEntity
 import dev.hybridlabs.albom.entity.giant.FrostGiantEntity
 import dev.hybridlabs.albom.entity.giant.HillGiantEntity
@@ -44,6 +47,27 @@ object ALBOMEntityTypes {
         FrostGiantEntity::createMobAttributes
     )
 
+    val FAIRY = registerFae(
+        "fairy",
+        ::FairyEntity,
+        EntityDimensions.fixed(0.2f, 0.3f),
+        FairyEntity::createMobAttributes
+    )
+
+    val PIXIE = registerFae(
+        "pixie",
+        ::PixieEntity,
+        EntityDimensions.fixed(0.2f, 0.3f),
+        PixieEntity::createMobAttributes
+    )
+
+    val SPRITE = registerFae(
+        "sprite",
+        ::SpriteEntity,
+        EntityDimensions.fixed(0.3f, 0.3f),
+        SpriteEntity::createMobAttributes
+    )
+
     private fun <T : LivingEntity> registerMonster(
         id: String,
         entityFactory: EntityType.EntityFactory<T>,
@@ -54,6 +78,20 @@ object ALBOMEntityTypes {
         return registerCustomSpawnGroup(
             id, entityFactory, dimensions, attributeContainer,
             MobCategory.MONSTER,
+            trackingRange,
+        )
+    }
+
+    private fun <T : LivingEntity> registerFae(
+        id: String,
+        entityFactory: EntityType.EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: Callable<AttributeSupplier.Builder>,
+        trackingRange: Int = 6,
+    ): RegistryObject<EntityType<T>> {
+        return registerCustomSpawnGroup(
+            id, entityFactory, dimensions, attributeContainer,
+            MobCategory.CREATURE,
             trackingRange,
         )
     }

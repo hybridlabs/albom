@@ -1,5 +1,6 @@
 package dev.hybridlabs.albom.entity
 
+import dev.hybridlabs.albom.entity.fae.AbstractFaeEntity
 import dev.hybridlabs.albom.entity.giant.AbstractGiantEntity
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
@@ -12,10 +13,17 @@ import net.minecraft.world.level.levelgen.Heightmap
  */
 object SpawnRestrictionRegistry {
     fun registerSpawnRestrictions() {
-        // shallow fish
+        // giants
         setOf(
             ALBOMEntityTypes.HILL_GIANT.get(),
         ).forEach { registerGiant(it) }
+
+        // fae
+        setOf(
+            ALBOMEntityTypes.FAIRY.get(),
+            ALBOMEntityTypes.PIXIE.get(),
+            ALBOMEntityTypes.SPRITE.get(),
+        ).forEach { registerFae(it) }
     }
 
     private fun <T : AbstractGiantEntity> registerGiant(entityType: EntityType<T>) {
@@ -29,6 +37,21 @@ object SpawnRestrictionRegistry {
         register(
             entityType,
             SpawnPlacements.Type.ON_GROUND,
+            predicate
+        )
+    }
+
+    private fun <T : AbstractFaeEntity> registerFae(entityType: EntityType<T>) {
+        registerFae(entityType, AbstractFaeEntity::canSpawn)
+    }
+
+    private fun <T : Mob> registerFae(
+        entityType: EntityType<T>,
+        predicate: SpawnPlacements.SpawnPredicate<T>,
+    ) {
+        register(
+            entityType,
+            SpawnPlacements.Type.NO_RESTRICTIONS,
             predicate
         )
     }
