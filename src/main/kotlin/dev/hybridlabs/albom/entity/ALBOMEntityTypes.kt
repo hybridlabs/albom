@@ -7,6 +7,12 @@ import dev.hybridlabs.albom.entity.fae.SpriteEntity
 import dev.hybridlabs.albom.entity.giant.FireGiantEntity
 import dev.hybridlabs.albom.entity.giant.FrostGiantEntity
 import dev.hybridlabs.albom.entity.giant.HillGiantEntity
+import dev.hybridlabs.albom.entity.goblin.GoblinArcherEntity
+import dev.hybridlabs.albom.entity.goblin.GoblinBomberEntity
+import dev.hybridlabs.albom.entity.goblin.GoblinGruntEntity
+import dev.hybridlabs.albom.entity.goblin.GoblinRiderEntity
+import dev.hybridlabs.albom.entity.goblin.GoblinScoutEntity
+import dev.hybridlabs.albom.entity.goblin.GoblinShamanEntity
 import dev.hybridlabs.albom.entity.insect.ScarabEntity
 import dev.hybridlabs.albom.platform.Services
 import dev.hybridlabs.albom.platform.registration.RegistryObject
@@ -66,6 +72,49 @@ object ALBOMEntityTypes {
         ::SpriteEntity,
         EntityDimensions.fixed(0.5f, 0.75f),
         SpriteEntity::createMobAttributes
+    )
+
+    //#region Goblins
+    val GOBLIN_GRUNT = registerHumanoid(
+        "goblin_grunt",
+        ::GoblinGruntEntity,
+        EntityDimensions.fixed(0.75f, 1.5f),
+        GoblinGruntEntity::createMobAttributes
+    )
+    
+    val GOBLIN_BOMBER = registerHumanoid(
+        "goblin_bomber",
+        ::GoblinBomberEntity,
+        EntityDimensions.fixed(0.75f, 1.5f),
+        GoblinBomberEntity::createMobAttributes
+    )
+    
+    val GOBLIN_RIDER = registerHumanoid(
+        "goblin_rider",
+        ::GoblinRiderEntity,
+        EntityDimensions.fixed(0.75f, 1.5f),
+        GoblinRiderEntity::createMobAttributes
+    )
+    
+    val GOBLIN_ARCHER = registerHumanoid(
+        "goblin_archer",
+        ::GoblinArcherEntity,
+        EntityDimensions.fixed(0.75f, 1.5f),
+        GoblinArcherEntity::createMobAttributes
+    )
+    
+    val GOBLIN_SCOUT = registerHumanoid(
+        "goblin_scout",
+        ::GoblinScoutEntity,
+        EntityDimensions.fixed(0.75f, 1.5f),
+        GoblinScoutEntity::createMobAttributes
+    )
+    
+    val GOBLIN_SHAMAN = registerHumanoid(
+        "goblin_shaman",
+        ::GoblinShamanEntity,
+        EntityDimensions.fixed(0.75f, 1.5f),
+        GoblinShamanEntity::createMobAttributes
     )
 
     private fun <T : LivingEntity> registerMonster(
