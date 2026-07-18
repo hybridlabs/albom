@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
-import kotlin.collections.containsKey
 
 internal class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output) {
     override fun generateTranslations(builder: TranslationBuilder) {
@@ -27,6 +26,12 @@ internal class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvid
             ALBOMEntityTypes.PIXIE.get() to "Pixie",
             ALBOMEntityTypes.FAIRY.get() to "Fairy",
             ALBOMEntityTypes.SPRITE.get() to "Sprite",
+            ALBOMEntityTypes.GOBLIN_GRUNT.get() to "Goblin Grunt",
+            ALBOMEntityTypes.GOBLIN_BOMBER.get() to "Goblin Bomber",
+            ALBOMEntityTypes.GOBLIN_RIDER.get() to "Goblin Rider",
+            ALBOMEntityTypes.GOBLIN_ARCHER.get() to "Goblin Archer",
+            ALBOMEntityTypes.GOBLIN_SCOUT.get() to "Goblin Scout",
+            ALBOMEntityTypes.GOBLIN_SHAMAN.get() to "Goblin Shaman",
         )
 
         // verify display name list is valid

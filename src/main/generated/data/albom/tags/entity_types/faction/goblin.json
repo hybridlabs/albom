@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "albom:goblin_grunt",
+    "albom:goblin_bomber",
+    "albom:goblin_rider",
+    "albom:goblin_archer",
+    "albom:goblin_scout",
+    "albom:goblin_shaman"
+  ]
+}

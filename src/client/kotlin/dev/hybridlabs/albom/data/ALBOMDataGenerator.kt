@@ -19,6 +19,7 @@ internal object ALBOMDataGenerator : DataGeneratorEntrypoint {
 
         pack.addProvider(::LanguageProvider)
         pack.addProvider(::ModelProvider)
+        pack.addProvider(::FactionTagProvider)
     }
 
     fun <T> filterALBOM(registry: Registry<T>): (T & Any) -> Boolean {
